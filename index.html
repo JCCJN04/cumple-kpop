@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Mi Cumpleaños — Sofía — Invitación Digital</title>
+
+  <!-- Meta tags Open Graph para vista previa al compartir en WhatsApp, Telegram y redes sociales -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://invitacion-guerras-kpop.vercel.app/" />
+  <meta property="og:title" content="¡Estás Invitado a Mi Cumpleaños! — Sofía" />
+  <meta property="og:description" content="¡Prepárate para la fiesta del año! Consulta fecha, hora y ubicación del Cumpleaños de Sofía en Ciudad de Guatemala." />
+  <meta property="og:image" content="./cover.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter Card Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="¡Estás Invitado a Mi Cumpleaños! — Sofía" />
+  <meta name="twitter:description" content="¡Prepárate para la fiesta del año! Consulta fecha, hora y ubicación." />
+  <meta name="twitter:image" content="./cover.png" />
+
+  <!-- Tipografías de Google Fonts: Orbitron, Rajdhani, Outfit y Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&family=Orbitron:wght@500;700;800;900&family=Outfit:wght@300;400;600;700;800&family=Rajdhani:wght@500;600;700" rel="stylesheet">
+
+  <link rel="stylesheet" href="./src/style.css" />
+</head>
+
+<body>
+
+  <!-- Fondo animado con luces neón -->
+  <div class="cyber-bg-lights">
+    <div class="light-beam beam-1"></div>
+    <div class="light-beam beam-2"></div>
+    <div class="light-beam beam-3"></div>
+    <div class="grid-overlay"></div>
+  </div>
+
+  <!-- HERO SECTION PRINCIPAL CON VIDEO OFICIAL EN VIVO Y SONIDO -->
+  <section class="hero-section">
+    <div class="video-container">
+      <video id="hero-video-player" autoplay loop playsinline preload="auto" poster="./cover.png">
+        <source src="./kpop-video.mp4" type="video/mp4">
+      </video>
+      <div class="video-overlay-gradient"></div>
+    </div>
+
+    <div class="hero-content">
+      <h2 class="hero-subtitle">ESTÁS INVITADO A</h2>
+      <h1 class="hero-glitch-title" data-text="MI CUMPLEAÑOS">MI CUMPLEAÑOS</h1>
+      <p class="hero-event-name">SOFÍA — <span class="highlight-name">5 AÑOS</span></p>
+
+      <div class="hero-details-row">
+        <div class="detail-chip">
+          <span class="chip-label">EDAD</span>
+          <span class="chip-value">5 AÑOS</span>
+        </div>
+        <div class="detail-divider">|</div>
+        <div class="detail-chip">
+          <span class="chip-label">FECHA</span>
+          <span class="chip-value">15 NOV 2026</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN: CUENTA REGRESIVA EN TIEMPO REAL -->
+  <section class="section-container countdown-section">
+    <div class="section-title-wrap">
+      <span class="cyber-tag">CONTEO REGRESIVO</span>
+      <h2 class="section-heading">LA FIESTA COMIENZA EN:</h2>
+      <div class="heading-line"></div>
+    </div>
+
+    <div class="countdown-grid" id="countdown-timer">
+      <div class="time-card">
+        <div class="time-number-box">
+          <span id="days" class="time-val">00</span>
+        </div>
+        <span class="time-unit">DÍAS</span>
+      </div>
+      <div class="time-colon">:</div>
+      <div class="time-card">
+        <div class="time-number-box">
+          <span id="hours" class="time-val">00</span>
+        </div>
+        <span class="time-unit">HORAS</span>
+      </div>
+      <div class="time-colon">:</div>
+      <div class="time-card">
+        <div class="time-number-box">
+          <span id="minutes" class="time-val">00</span>
+        </div>
+        <span class="time-unit">MINUTOS</span>
+      </div>
+      <div class="time-colon">:</div>
+      <div class="time-card">
+        <div class="time-number-box">
+          <span id="seconds" class="time-val">00</span>
+        </div>
+        <span class="time-unit">SEGUNDOS</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN: DETALLES DEL EVENTO (UBICACIÓN EN CIUDAD DE GUATEMALA CON MAPA EMBEBIDO) -->
+  <section id="detalles-evento" class="section-container schedule-section">
+    <div class="section-title-wrap">
+      <span class="cyber-tag">UBICACIÓN Y HORARIOS</span>
+      <h2 class="section-heading">RECEPCIÓN Y FIESTA</h2>
+      <div class="heading-line"></div>
+    </div>
+
+    <div class="single-card-wrap">
+      <div class="cyber-card glass-card card-featured">
+        <div class="card-badge featured-badge">MAIN STAGE</div>
+        <h3 class="card-title">RECEPCIÓN Y FIESTA</h3>
+        <div class="card-time">19:30 HRS</div>
+        <h4 class="venue-name">Grand Plaza Cayalá — Salón Neón</h4>
+        <p class="venue-address">Paseo Cayalá, Zona 16, Ciudad de Guatemala</p>
+        
+        <!-- Mapa embebido de Google Maps en Guatemala -->
+        <div class="map-embed-container">
+          <iframe 
+            title="Mapa de Ubicación Paseo Cayalá Ciudad de Guatemala"
+            src="https://maps.google.com/maps?q=Paseo%20Cayala%20Ciudad%20de%20Guatemala&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+            width="100%" 
+            height="260" 
+            style="border:0; border-radius: 16px; margin: 16px 0;" 
+            allowfullscreen="" 
+            loading="lazy">
+          </iframe>
+        </div>
+
+        <div class="card-actions">
+          <a href="https://maps.google.com/?q=Paseo+Cayala+Ciudad+de+Guatemala" target="_blank" rel="noopener" class="card-btn btn-maps">
+            <span>Google Maps</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN: CÓDIGO DE VESTIMENTA (DRESS CODE SIN CÓDIGOS HEX) -->
+  <section class="section-container dresscode-section">
+    <div class="cyber-card glass-card dresscode-card">
+      <div class="dresscode-header">
+        <h2>CÓDIGO DE VESTIMENTA</h2>
+        <p class="dress-subtitle">CYBER K-POP CHIC / FORMAL GLAM NEÓN</p>
+      </div>
+
+      <p class="dress-description">
+        Queremos verte deslumbrar. Inspirado en el estilo de conciertos K-pop y cazadoras de neón. 
+        Te sugerimos combinar prendas elegantes con detalles brillantes o accesorios neón.
+      </p>
+
+      <div class="color-palette-wrap">
+        <span class="palette-title">PALETA DE COLORES RECOMENDADA:</span>
+        <div class="color-swatches">
+          <div class="swatch" style="background: #ff007f;" title="Magenta Neón"></div>
+          <div class="swatch" style="background: #00f3ff;" title="Cian Eléctrico"></div>
+          <div class="swatch" style="background: #7b2cbf;" title="Púrpura Cyber"></div>
+          <div class="swatch" style="background: #ffd700;" title="Dorado Concert"></div>
+          <div class="swatch" style="background: #111111;" title="Negro Stage"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN: GALERÍA DE PHOTOS Y PHOTOCARDS -->
+  <section class="section-container gallery-section">
+    <div class="section-title-wrap">
+      <span class="cyber-tag">CONCEPT PHOTOS</span>
+      <h2 class="section-heading">GALERÍA DE PHOTOCARDS</h2>
+      <div class="heading-line"></div>
+    </div>
+
+    <div class="photocard-grid">
+      <div class="photocard-item">
+        <div class="photocard-inner">
+          <img src="./photo1.png" alt="Concept Photo 1 - Sofía" loading="lazy" />
+          <div class="photocard-overlay">
+            <span class="holo-tag">HOLOCARD #01</span>
+            <span class="photocard-caption">SOFÍA — CONCEPT PHOTO A</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="photocard-item">
+        <div class="photocard-inner">
+          <img src="./cover.png" alt="Concept Photo 2 - Stage Lights" loading="lazy" />
+          <div class="photocard-overlay">
+            <span class="holo-tag">HOLOCARD #02</span>
+            <span class="photocard-caption">STAGE LIGHTS</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="photocard-item">
+        <div class="photocard-inner">
+          <img src="./photo2.png" alt="Concept Photo 3 - Cyber Vibe" loading="lazy" />
+          <div class="photocard-overlay">
+            <span class="holo-tag">HOLOCARD #03</span>
+            <span class="photocard-caption">CYBER DANCE VIBE</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER CON ENLACE A INVITACIONESDIGITALESMTY -->
+  <footer class="cyber-footer">
+    <a href="https://www.instagram.com/invitacionesdigitalesmty" target="_blank" rel="noopener" class="footer-link">
+      Hecho por invitacionesdigitalesmty
+    </a>
+  </footer>
+
+  <script type="module" src="./src/main.js"></script>
+</body>
+
+</html>
