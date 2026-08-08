@@ -142,6 +142,7 @@ body {
   padding: 60px 20px;
   text-align: center;
   overflow: hidden;
+  background: var(--color-bg-dark);
 }
 
 .video-container {
@@ -149,6 +150,7 @@ body {
   inset: 0;
   z-index: 0;
   overflow: hidden;
+  background: var(--color-bg-dark);
 }
 
 #hero-video-player {
@@ -654,7 +656,7 @@ body {
   <!-- HERO SECTION PRINCIPAL CON VIDEO OFICIAL EN VIVO Y SONIDO -->
   <section class="hero-section">
     <div class="video-container">
-      <video id="hero-video-player" autoplay loop playsinline preload="auto" poster="https://cumple-kpop.vercel.app/cover.png">
+      <video id="hero-video-player" autoplay loop playsinline muted preload="auto">
         <source src="https://cumple-kpop.vercel.app/kpop-video.mp4" type="video/mp4">
       </video>
       <div class="video-overlay-gradient"></div>
@@ -837,6 +839,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const heroVideo = document.getElementById('hero-video-player');
 
   if (heroVideo) {
+    // Intentar reproducción inmediata silenciosa
+    heroVideo.muted = true;
+    heroVideo.play().catch(() => {});
+
     // Activar sonido con la primera interacción del usuario (política autoplay del navegador)
     const enableVideoAudioOnTouch = () => {
       heroVideo.muted = false;
