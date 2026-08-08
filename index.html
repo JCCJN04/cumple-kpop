@@ -11,7 +11,7 @@
   <meta property="og:url" content="https://invitacionesdigitalesmty.com.mx/cumple-kpop" />
   <meta property="og:title" content="¡Estás Invitado a Mi Cumpleaños! — Sofía" />
   <meta property="og:description" content="¡Prepárate para la fiesta del año! Consulta fecha, hora y ubicación del Cumpleaños de Sofía en Ciudad de Guatemala." />
-  <meta property="og:image" content="./cover.png" />
+  <meta property="og:image" content="https://cumple-kpop.vercel.app/cover.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
 
@@ -19,14 +19,626 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="¡Estás Invitado a Mi Cumpleaños! — Sofía" />
   <meta name="twitter:description" content="¡Prepárate para la fiesta del año! Consulta fecha, hora y ubicación." />
-  <meta name="twitter:image" content="./cover.png" />
+  <meta name="twitter:image" content="https://cumple-kpop.vercel.app/cover.png" />
 
   <!-- Tipografías de Google Fonts: Orbitron, Rajdhani, Outfit y Montserrat -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&family=Orbitron:wght@500;700;800;900&family=Outfit:wght@300;400;600;700;800&family=Rajdhani:wght@500;600;700" rel="stylesheet">
 
-  <link rel="stylesheet" href="./src/style.css" />
+  <style>
+/* ══════════════════════════════════════════════════════════════════
+   CYBER K-POP DEMON HUNTERS DESIGN SYSTEM
+   ══════════════════════════════════════════════════════════════════ */
+:root {
+  --color-bg-dark: #090314;
+  --color-bg-card: rgba(22, 11, 41, 0.75);
+  --color-neon-pink: #ff007f;
+  --color-neon-cyan: #00f3ff;
+  --color-neon-purple: #7b2cbf;
+  --color-neon-gold: #ffd700;
+  --color-text-main: #ffffff;
+  --color-text-muted: #b8b0cf;
+
+  --font-display: 'Orbitron', sans-serif;
+  --font-sub: 'Rajdhani', sans-serif;
+  --font-body: 'Outfit', 'Montserrat', sans-serif;
+
+  --glass-border: 1px solid rgba(0, 243, 255, 0.25);
+  --glass-shadow: 0 8px 32px 0 rgba(255, 0, 127, 0.2);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-main);
+  overflow-x: hidden;
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   FONDO ANIMADO CON LUCES NEÓN
+   ══════════════════════════════════════════════════════════════════ */
+.cyber-bg-lights {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.light-beam {
+  position: absolute;
+  filter: blur(80px);
+  opacity: 0.35;
+  border-radius: 50%;
+  animation: floatBeam 12s infinite alternate ease-in-out;
+}
+
+.beam-1 {
+  width: 450px;
+  height: 450px;
+  background: var(--color-neon-pink);
+  top: -100px;
+  left: -100px;
+}
+
+.beam-2 {
+  width: 500px;
+  height: 500px;
+  background: var(--color-neon-cyan);
+  bottom: -150px;
+  right: -100px;
+  animation-delay: -4s;
+}
+
+.beam-3 {
+  width: 350px;
+  height: 350px;
+  background: var(--color-neon-purple);
+  top: 40%;
+  left: 30%;
+  animation-delay: -8s;
+}
+
+.grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+@keyframes floatBeam {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(50px, 80px) scale(1.2); }
+  100% { transform: translate(-40px, 40px) scale(0.9); }
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   HERO SECTION CON VIDEO DE FONDO Y SONIDO DIRECTO
+   ══════════════════════════════════════════════════════════════════ */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.video-container {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+#hero-video-player {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 1;
+  opacity: 0.65;
+  filter: brightness(0.85) contrast(1.15);
+}
+
+.video-overlay-gradient {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: radial-gradient(circle at center, rgba(9,3,20,0.3) 0%, rgba(9,3,20,0.95) 85%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 5;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.hero-subtitle {
+  font-family: var(--font-sub);
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 4px;
+  color: var(--color-neon-cyan);
+}
+
+.hero-glitch-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: 2px;
+  color: #fff;
+  text-shadow: 
+    0 0 10px rgba(255, 0, 127, 0.8),
+    0 0 20px rgba(255, 0, 127, 0.6),
+    0 0 30px rgba(0, 243, 255, 0.6);
+  position: relative;
+}
+
+.hero-event-name {
+  font-family: var(--font-sub);
+  font-size: clamp(1.4rem, 4vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--color-text-muted);
+}
+
+.highlight-name {
+  color: var(--color-neon-gold);
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+}
+
+.hero-details-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 15px;
+}
+
+.detail-chip {
+  display: flex;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 8px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.detail-divider {
+  color: var(--color-neon-cyan);
+  font-weight: 700;
+}
+
+.chip-label {
+  font-size: 0.65rem;
+  color: var(--color-neon-cyan);
+  font-family: var(--font-display);
+}
+
+.chip-value {
+  font-family: var(--font-sub);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   SECCIONES Y TARJETAS GENERALES
+   ══════════════════════════════════════════════════════════════════ */
+.section-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 80px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section-title-wrap {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.cyber-tag {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  color: var(--color-neon-cyan);
+  letter-spacing: 3px;
+}
+
+.section-heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-weight: 800;
+  margin: 6px 0;
+  background: linear-gradient(135deg, #fff 40%, var(--color-neon-pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-subtext {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+.heading-line {
+  width: 60px;
+  height: 4px;
+  background: var(--color-neon-cyan);
+  margin: 12px auto 0;
+  border-radius: 2px;
+  box-shadow: 0 0 10px var(--color-neon-cyan);
+}
+
+.glass-card {
+  background: var(--color-bg-card);
+  backdrop-filter: blur(16px);
+  border: var(--glass-border);
+  border-radius: 24px;
+  padding: 32px 24px;
+  box-shadow: var(--glass-shadow);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.glass-card:hover {
+  border-color: var(--color-neon-pink);
+  transform: translateY(-4px);
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   CUENTA REGRESIVA
+   ══════════════════════════════════════════════════════════════════ */
+.countdown-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.time-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.time-number-box {
+  width: 80px;
+  height: 90px;
+  background: rgba(10, 4, 25, 0.9);
+  border: 2px solid var(--color-neon-pink);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 15px rgba(255, 0, 127, 0.3), 0 0 20px rgba(255, 0, 127, 0.2);
+}
+
+.time-val {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--color-neon-cyan);
+  text-shadow: 0 0 12px var(--color-neon-cyan);
+}
+
+.time-unit {
+  font-family: var(--font-sub);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  margin-top: 8px;
+  letter-spacing: 1px;
+}
+
+.time-colon {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--color-neon-pink);
+  font-weight: 900;
+  align-self: center;
+  padding-bottom: 25px;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   PROGRAMA Y UBICACIONES
+   ══════════════════════════════════════════════════════════════════ */
+.single-card-wrap {
+  width: 100%;
+  max-width: 650px;
+}
+
+.map-embed-container {
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.cyber-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.card-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  padding: 4px 12px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 12px;
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  color: var(--color-neon-cyan);
+}
+
+.featured-badge {
+  background: var(--color-neon-pink);
+  color: #fff;
+  font-weight: 800;
+}
+
+.card-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  margin-top: 10px;
+  margin-bottom: 4px;
+}
+
+.card-time {
+  font-family: var(--font-sub);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-neon-cyan);
+  margin-bottom: 12px;
+}
+
+.venue-name {
+  font-family: var(--font-sub);
+  font-size: 1.25rem;
+  color: var(--color-neon-gold);
+  margin-bottom: 6px;
+}
+
+.venue-address {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin-bottom: 16px;
+}
+
+.card-actions {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.card-btn {
+  flex: 1;
+  padding: 10px 14px;
+  border-radius: 14px;
+  text-decoration: none;
+  font-family: var(--font-sub);
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s;
+}
+
+.btn-maps {
+  background: #ea4335;
+  color: #fff;
+}
+
+.card-btn:hover {
+  opacity: 0.9;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   CÓDIGO DE VESTIMENTA
+   ══════════════════════════════════════════════════════════════════ */
+.dresscode-card {
+  width: 100%;
+  text-align: center;
+}
+
+.dresscode-header h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: #fff;
+  margin-top: 6px;
+}
+
+.dress-subtitle {
+  font-family: var(--font-sub);
+  color: var(--color-neon-pink);
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.dress-description {
+  color: var(--color-text-muted);
+  max-width: 600px;
+  margin: 0 auto 24px;
+  font-size: 0.95rem;
+}
+
+.palette-title {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  color: var(--color-neon-cyan);
+  display: block;
+  margin-bottom: 12px;
+}
+
+.color-swatches {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.swatch {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  border: 2px solid rgba(255,255,255,0.4);
+  transition: transform 0.2s;
+}
+
+.swatch:hover {
+  transform: scale(1.15);
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   GALERÍA DE PHOTOCARDS
+   ══════════════════════════════════════════════════════════════════ */
+.photocard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  width: 100%;
+}
+
+.photocard-inner {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid var(--color-neon-pink);
+  aspect-ratio: 3/4;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.photocard-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.photocard-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(9, 3, 20, 0.95) 0%, transparent 60%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 16px;
+}
+
+.holo-tag {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  color: var(--color-neon-cyan);
+}
+
+.photocard-caption {
+  font-family: var(--font-sub);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.photocard-inner:hover {
+  transform: translateY(-8px) rotate(1deg);
+  box-shadow: 0 15px 35px rgba(255, 0, 127, 0.4);
+}
+
+.photocard-inner:hover img {
+  transform: scale(1.08);
+}
+
+/* FOOTER */
+.cyber-footer {
+  text-align: center;
+  padding: 30px 20px;
+  border-top: 1px solid rgba(255, 0, 127, 0.2);
+  background: rgba(5, 2, 12, 0.95);
+  margin-top: 40px;
+}
+
+.footer-link {
+  color: var(--color-neon-cyan);
+  font-family: var(--font-sub);
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 20px;
+  background: rgba(0, 243, 255, 0.05);
+  border: 1px solid rgba(0, 243, 255, 0.2);
+}
+
+.footer-link:hover {
+  color: #fff;
+  background: var(--color-neon-pink);
+  border-color: var(--color-neon-pink);
+  box-shadow: 0 0 15px rgba(255, 0, 127, 0.6);
+  transform: translateY(-2px);
+}
+
+/* RESPONSIVE MEDIA QUERIES */
+@media (max-width: 600px) {
+  .countdown-grid {
+    gap: 6px;
+  }
+  .time-number-box {
+    width: 65px;
+    height: 75px;
+  }
+  .time-val {
+    font-size: 1.7rem;
+  }
+  .time-colon {
+    font-size: 1.5rem;
+  }
+  .hero-glitch-title {
+    font-size: 2.5rem;
+  }
+}
+  </style>
 </head>
 
 <body>
@@ -42,8 +654,8 @@
   <!-- HERO SECTION PRINCIPAL CON VIDEO OFICIAL EN VIVO Y SONIDO -->
   <section class="hero-section">
     <div class="video-container">
-      <video id="hero-video-player" autoplay loop playsinline preload="auto" poster="./cover.png">
-        <source src="./kpop-video.mp4" type="video/mp4">
+      <video id="hero-video-player" autoplay loop playsinline preload="auto" poster="https://cumple-kpop.vercel.app/cover.png">
+        <source src="https://cumple-kpop.vercel.app/kpop-video.mp4" type="video/mp4">
       </video>
       <div class="video-overlay-gradient"></div>
     </div>
@@ -164,7 +776,7 @@
           <div class="swatch" style="background: #00f3ff;" title="Cian Eléctrico"></div>
           <div class="swatch" style="background: #7b2cbf;" title="Púrpura Cyber"></div>
           <div class="swatch" style="background: #ffd700;" title="Dorado Concert"></div>
-          <div class="swatch" style="background: #111111;" title="Negro Stage"><span></span></div>
+          <div class="swatch" style="background: #111111;" title="Negro Stage"></div>
         </div>
       </div>
     </div>
@@ -181,7 +793,7 @@
     <div class="photocard-grid">
       <div class="photocard-item">
         <div class="photocard-inner">
-          <img src="./photo1.png" alt="Concept Photo 1 - Sofía" loading="lazy" />
+          <img src="https://cumple-kpop.vercel.app/photo1.png" alt="Concept Photo 1 - Sofía" loading="lazy" />
           <div class="photocard-overlay">
             <span class="holo-tag">HOLOCARD #01</span>
             <span class="photocard-caption">SOFÍA — CONCEPT PHOTO A</span>
@@ -191,7 +803,7 @@
 
       <div class="photocard-item">
         <div class="photocard-inner">
-          <img src="./cover.png" alt="Concept Photo 2 - Stage Lights" loading="lazy" />
+          <img src="https://cumple-kpop.vercel.app/cover.png" alt="Concept Photo 2 - Stage Lights" loading="lazy" />
           <div class="photocard-overlay">
             <span class="holo-tag">HOLOCARD #02</span>
             <span class="photocard-caption">STAGE LIGHTS</span>
@@ -201,7 +813,7 @@
 
       <div class="photocard-item">
         <div class="photocard-inner">
-          <img src="./photo2.png" alt="Concept Photo 3 - Cyber Vibe" loading="lazy" />
+          <img src="https://cumple-kpop.vercel.app/photo2.png" alt="Concept Photo 3 - Cyber Vibe" loading="lazy" />
           <div class="photocard-overlay">
             <span class="holo-tag">HOLOCARD #03</span>
             <span class="photocard-caption">CYBER DANCE VIBE</span>
@@ -218,7 +830,58 @@
     </a>
   </footer>
 
-  <script type="module" src="./src/main.js"></script>
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  // 1. REPRODUCCIÓN DEL VIDEO HERO CON SONIDO AL TOCAR LA PANTALLA
+  const heroVideo = document.getElementById('hero-video-player');
+
+  if (heroVideo) {
+    // Activar sonido con la primera interacción del usuario (política autoplay del navegador)
+    const enableVideoAudioOnTouch = () => {
+      heroVideo.muted = false;
+      heroVideo.play().catch(() => {});
+      document.removeEventListener('click', enableVideoAudioOnTouch);
+      document.removeEventListener('touchstart', enableVideoAudioOnTouch);
+      document.removeEventListener('scroll', enableVideoAudioOnTouch);
+    };
+
+    document.addEventListener('click', enableVideoAudioOnTouch, { once: true });
+    document.addEventListener('touchstart', enableVideoAudioOnTouch, { once: true });
+    document.addEventListener('scroll', enableVideoAudioOnTouch, { once: true });
+  }
+
+  // 2. CONFIGURACIÓN DEL CONTEO REGRESIVO EN TIEMPO REAL
+  // Fecha objetivo: 15 de Noviembre de 2026 a las 17:00 HRS
+  const eventTargetDate = new Date('November 15, 2026 17:00:00').getTime();
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = eventTargetDate - now;
+
+    if (distance < 0) {
+      document.getElementById('days').innerText = '00';
+      document.getElementById('hours').innerText = '00';
+      document.getElementById('minutes').innerText = '00';
+      document.getElementById('seconds').innerText = '00';
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById('days').innerText = String(days).padStart(2, '0');
+    document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+    document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+    document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+  }
+
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+});
+  </script>
 </body>
 
 </html>
